@@ -22,7 +22,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
+        pip install flask pytest python-dotenv
 
     - name: Run tests with pytest
       run: |
@@ -42,16 +42,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
+
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+        
     - name: Deploy to staging
       run: |
-        echo "Deploying to staging environment..."
+        echo "🚀 Deploying to staging environment..."
         echo "Application: Flask GitHub Actions App"
         echo "Branch: ${{ github.ref }}"
         echo "Deployment triggered by: ${{ github.actor }}"
@@ -65,16 +68,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
+
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+
     - name: Deploy to production
       run: |
-        echo "DEPLOYING TO PRODUCTION!"
+        echo "🎉 DEPLOYING TO PRODUCTION!"
         echo "Release: ${{ github.event.release.tag_name }}"
         echo "Deployment triggered by: ${{ github.actor }}"
         # Add your actual production deployment commands here
