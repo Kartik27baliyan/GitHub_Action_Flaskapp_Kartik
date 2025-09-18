@@ -1,4 +1,3 @@
-
 import unittest
 import json
 from main import app, db, TodoList
@@ -8,6 +7,11 @@ class FlaskApiTests(unittest.TestCase):
         app.config["TESTING"] = True
         app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
         self.app = app.test_client()
+        
+        # Push application context for database operations
+        self.app_context = app.app_context()
+        self.app_context.push()
+        
         db.create_all()
         self.create_test_data()
 
@@ -32,7 +36,10 @@ class FlaskApiTests(unittest.TestCase):
         self.assertEqual(response.data, b'{"201":"todo created successfully"}\n')
 
     def tearDown(self):
+        db.session.remove()
         db.drop_all()
+        # Pop the application context
+        self.app_context.pop()
 
 if __name__ == "__main__":
     unittest.main()
