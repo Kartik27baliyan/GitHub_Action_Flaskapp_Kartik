@@ -1,3 +1,4 @@
+
 # Flask CI/CD Pipeline with GitHub Actions
 
 This project demonstrates a continuous integration and deployment (CI/CD) pipeline for a Flask application using GitHub Actions.
@@ -48,3 +49,9 @@ The `.github/workflows/ci_cd.yml` file defines the pipeline:
 - Branch deployment restrictions
 - Required reviewers (optional)
 - Wait timers for deployment safety
+
+# GitHub_Action_Flaskapp_Kartik
+ CI/CD workflow using GitHub Actions for a Python application.
+ Prepairing to launch! 
+
+
